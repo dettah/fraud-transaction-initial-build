@@ -1,0 +1,14 @@
+AI-BASED FRAUD DETECTION SYSTEM
+
+Purpose: Estimate whether a mobile-money transaction is fraudulent.
+Dataset: PaySim synthetic financial transaction dataset.
+Target: isFraud
+Model: Random Forest Classifier
+Inputs: step, transaction type, amount
+Engineered: hour, day, log_amount
+Excluded: account IDs, balance columns, isFlaggedFraud
+Evaluation: Precision, Recall, F1, ROC-AUC, PR-AUC, confusion matrix
+App: Streamlit
+Train: python src/train.py
+Terminal prediction: python predict.py
+Web app: streamlit run app.py
