@@ -18,7 +18,8 @@ df=load_data(MAX_ROWS)
 print(f'Rows used: {len(df):,}'); print(f'Fraud rows: {df.isFraud.sum():,}'); print(f'Fraud rate: {df.isFraud.mean()*100:.4f}%')
 
 X,y=prepare_features(df)
-cat=['type']; num=['step','amount','hour','day','log_amount']
+cat=['type']; num=['step','amount', "oldbalanceOrg",
+    "oldbalanceDest",'hour','day','log_amount']
 Xtr,Xte,ytr,yte=train_test_split(X,y,test_size=.20,random_state=42,stratify=y)
 prep=ColumnTransformer([('cat',OneHotEncoder(handle_unknown='ignore'),cat),('num','passthrough',num)])
 Xtr=prep.fit_transform(Xtr); Xte=prep.transform(Xte)

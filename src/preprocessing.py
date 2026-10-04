@@ -1,7 +1,7 @@
 import numpy as np
 
 TARGET='isFraud'
-DROP=['nameOrig','nameDest','oldbalanceOrg','newbalanceOrig','oldbalanceDest','newbalanceDest','isFlaggedFraud',TARGET]
+DROP=['nameOrig','nameDest','newbalanceOrig','newbalanceDest','isFlaggedFraud',TARGET]
 
 def prepare_features(df):
     data=df.copy()

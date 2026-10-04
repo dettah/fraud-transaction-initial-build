@@ -15,12 +15,12 @@ DATASET_ID = "LordNR/AMLGraphX-Paysim"
 
 
 def find_dataset():
-    """Kept for compatibility. Always returns None because we load from Hugging Face."""
+    """ for compatibility.will Always returns None because we load from Hugging Face."""
     return None
 
 
 def load_data(max_rows=500_000, random_state=42):
-    # Load from Hugging Face (streaming)
+    # Load from Hugging Face
     stream = (
         load_dataset(DATASET_ID, split="train", streaming=True)
         .shuffle(seed=random_state, buffer_size=100_000)
@@ -33,7 +33,7 @@ def load_data(max_rows=500_000, random_state=42):
     if missing:
         raise ValueError(f"Dataset is missing expected columns: {missing}")
 
-    # Keep the same stratified sampling logic you already had
+    # stratify the output
     if max_rows is not None and len(df) > max_rows:
         fraud = df[df.isFraud == 1]
         legit = df[df.isFraud == 0]
